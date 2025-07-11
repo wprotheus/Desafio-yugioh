@@ -8,7 +8,7 @@
 .framed
 {
     border-style: solid;
-    border-image-source: url("../assets/img/border-image.png");
+    border-image-source: url('../assets/img/border-image.png');
     border-image-repeat: repeat;
     border-image-slice: 6 6 6 6;
     border-image-width: 18px;
@@ -23,14 +23,14 @@
     /* background */
     background-clip: padding-box;
     background-origin: padding-box;
-    background: url("../assets/img/background-image.png") repeat repeat center;
+    background: url('../assets/img/background-image.png') repeat repeat center;
 }
 
 .framed-golden
 {
 
     border-style: solid;
-    border-image-source: url("../assets/img/border-image-golden.png");
+    border-image-source: url('../assets/img/border-image-golden.png');
     border-image-repeat: repeat;
     border-image-slice: 4 4 4 4;
     border-image-width: 18px;
@@ -45,14 +45,14 @@
     /* background */
     background-clip: padding-box;
     background-origin: padding-box;
-    background: url("../assets/img/background-image-golden.png") repeat repeat center;
+    background: url('../assets/img/background-image-golden.png') repeat repeat center;
 }
 
 .framed-golden-2
 {
     /* border */
     border-style: solid;
-    border-image-source: url("../assets/img/border-image-golden2.png");
+    border-image-source: url('../assets/img/border-image-golden2.png');
     border-image-repeat: repeat;
     border-image-slice: 8 8 8 8;
     border-image-width: 18px;
@@ -67,7 +67,7 @@
     /* background */
     background-clip: padding-box;
     background-origin: padding-box;
-    background: url("../assets/img/background-image-golden2.png") repeat repeat center;
+    background: url('../assets/img/background-image-golden2.png') repeat repeat center;
 }
 
 .framed-grey
@@ -76,7 +76,7 @@
 
     /* border */
     border-style: solid;
-    border-image-source: url("../assets/img/border-image-grey.png");
+    border-image-source: url('../assets/img/border-image-grey.png');
     border-image-repeat: repeat;
     border-image-slice: 3 3 3 3;
     border-image-width: 7px;
@@ -91,5 +91,5 @@
     /* background */
     background-clip: padding-box;
     background-origin: padding-box;
-    background: url("/assets/img/background-image-grey.png") repeat repeat center;
+    background: url('../assets/img/background-image-grey.png') repeat repeat center;
 }

@@ -23,6 +23,7 @@ const state = {
     },
     actions: {
         button: document.getElementById("next-duel"),
+        buttonShow: document.getElementById("game-buttons"),
     },
     media: {
         audioBack: null,
@@ -78,26 +79,46 @@ async function updateScore() {
     state.score.computer.textContent = state.score.computerScore;
 }
 
+async function resetGame() {
+    state.actions.buttonShow.classList.add("hide-btn-duel");
+
+    state.fieldCards.computerCard.setAttribute("src", `${pathImages}card-back.png`);
+    state.fieldCards.computerCard.classList.add("hidden");
+    state.fieldCards.computerCard.setAttribute("alt", "Carta computador fechada");
+    state.fieldCards.playerCard.setAttribute("src", `${pathImages}card-back.png`);
+    state.fieldCards.playerCard.classList.add("hidden");
+    state.fieldCards.playerCard.setAttribute("alt", "Carta jogador fechada");
+
+    await removeAllCards();
+    await setUpCardSprites();
+    init();
+}
+
 async function showButtonNextDuel(resultMatch) {
-    state.actions.button.style.display = "block";
-    state.actions.button.classList.remove("hidden");
+    state.actions.buttonShow.classList.remove("show-btn-duel");
     state.actions.button.innerText = resultMatch.toUpperCase();
+    state.actions.button.addEventListener("click", async () => {
+        await resetGame();
+        state.actions.button.innerText = "";
+    });
 }
 
 async function checkMatch(cardId, pcCardId) {
-    let resultMatch = "draw";
-    const playerCard = cardData[cardId];
-    const computerCard = cardData[pcCardId];
+    let resultMatch = null;
 
-    if (playerCard.WinOf.includes(computerCard)) {
+    if (cardData[cardId].WinOf.includes(cardData[pcCardId].id)) {
         state.score.playerScore++;
         resultMatch = "win";
-    } else if (playerCard.LoseOf.includes(computerCard)) {
+    }
+
+    if (cardData[cardId].LoseOf.includes(cardData[pcCardId].id)) {
         state.score.computerScore++;
         resultMatch = "lose";
-    } else {
+    }
+    if (cardId === pcCardId) {
         state.score.playerScore++;
         state.score.computerScore++;
+        resultMatch = "draw";
     }
     await updateScore();
     await showButtonNextDuel(resultMatch);
@@ -106,6 +127,9 @@ async function checkMatch(cardId, pcCardId) {
 async function setCardSelected(cardId) {
     await removeAllCards();
     const pcCardId = await getRandomCardId();
+    state.fieldCards.computerCard.classList.remove("hidden");
+    state.fieldCards.playerCard.classList.remove("hidden");
+    state.actions.buttonShow.classList.remove("hide-btn-duel");
 
     state.fieldCards.computerCard.setAttribute("src", cardData[pcCardId].img);
     state.fieldCards.computerCard.setAttribute("alt", "Carta computador aberta");
@@ -116,9 +140,8 @@ async function setCardSelected(cardId) {
 }
 
 async function createCardImage(cardId, player) {
-    const elementImage = document.getElementById("eye-card");
     const cardImg = document.createElement("img");
-    cardImg.dataset.id = cardId; // Store the card ID in a data attribute
+    cardImg.dataset.id = cardId;
     cardImg.classList.add("card");
 
     if (player === state.playerSides.player) {
@@ -130,13 +153,17 @@ async function createCardImage(cardId, player) {
             state.cardSprites.image.remove();
         });
         cardImg.addEventListener("mouseout", () => {
-            state.cardSprites.avatar.setAttribute("src", `${pathImages}card-back.png`);
-            state.cardSprites.name.innerHTML = "";
-            state.cardSprites.type.innerHTML = "";
-            document.getElementById("card-status").appendChild(elementImage);
+            setUpCardSprites();
         });
     }
     return cardImg;
+}
+
+function setUpCardSprites() {
+    state.cardSprites.avatar.setAttribute("src", `${pathImages}card-back.png`);
+    state.cardSprites.name.innerHTML = "";
+    state.cardSprites.type.innerHTML = "";
+    document.getElementById("card-status").appendChild(state.cardSprites.image);
 }
 
 async function drawSelectedCard(cardId) {
@@ -155,11 +182,10 @@ async function drawCards(numCards, player) {
         console.error(`Container para ${player} não encontrado.`);
         return;
     }
-
     for (let i = 0; i < numCards; i++) {
         const cardId = await getRandomCardId();
         const cardImg = await createCardImage(cardId, player);
-        container.appendChild(cardImg); // Adiciona a carta ao contêiner correto
+        container.appendChild(cardImg);
     }
 }
 
@@ -199,18 +225,17 @@ function playVideo() {
 
 function initMedia() {
     createMediaElements();
-    // playAudio();
+    playAudio();
     playVideo();
 }
 
 function init() {
-
+    state.actions.buttonShow.classList.add("hide-btn-duel");
     drawCards(5, state.playerSides.computer).then(r => {
     });
     drawCards(5, state.playerSides.player).then(r => {
     });
     initMedia();
-    console.log(getRandomCardId());
 }
 
 init();

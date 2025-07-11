@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokenpô - Yu-Gi-Oh!</title>
+    <link rel="icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
+
+    <!-- Font Press Start 2P -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/buttons.css">
+    <link rel="stylesheet" href="./assets/css/containers_and_frames.css">
+</head>
+
+<body>
+<main>
+    <!--    <header>-->
+    <!--        <h1 id="title-game">Yu-Gi-Oh!</h1>-->
+    <!--    </header>-->
+    <section class="container-audio">
+        <div class="container-audio-content"></div>
+    </section>
+    <section class="container-video">
+        <div class="container-video-content"></div>
+    </section>
+    <div class="container-section">
+        <section class="container-section-left framed-golden-2">
+            <div class="container-section-left-content">
+                <div class="scoreboard frame">
+                    <h2>Score</h2>
+                    <div class="score">
+                        <p><span id="player-victors">Player-1</span> : <span id="computer-victors">Computer</span></p>
+                        <p><span id="player-score">0</span> : <span id="computer-score">0</span></p>
+                    </div>
+                </div>
+                <div class="back-card">
+                    <img id="back-card">
+                </div>
+                <div class="card-details frame">
+                    <div class="card-info">
+                        <h4>Pick-up your card!</h4>
+                    </div>
+                    <div id="card-status">
+                        <img id="eye-card">
+                        <p id="card-name"></p>
+                        <p id="card-type"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container-section-right">
+            <div class="container-section-right-content">
+                <div class="pc-cards framed" id="pc-cards-container">
+                </div>
+                <div class="card-vs-card">
+                    <div class="versus-computer">
+                        <img id="computer-card-drawn">
+                    </div>
+
+                    <div class="versus-versus"></div>
+
+                    <div class="versus-player">
+                        <img id="player-card-drawn">
+                    </div>
+                </div>
+                <button class="btn-result button" id="next-duel">.</button>
+                <div class="player-cards framed" id="player-cards-container">
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <!--    <div class="container-section-info framed-golden-2">-->
+    <!--        <section class="container-section-content">-->
+    <!--            <div class="section-content-text">-->
+    <!--                <p>Jokenpô é um jogo de cartas baseado no famoso jogo de pedra, papel e tesoura, mas com um toque-->
+    <!--                    especial do universo de Yu-Gi-Oh!. Escolha sua carta e desafie seu oponente!</p>-->
+    <!--            </div>-->
+    <!--            <div class="section-content-buttons">-->
+    <!--                <button id="start-game" class="button">Iniciar Jogo</button>-->
+    <!--                <button id="rules-game" class="button">Regras do Jogo</button>-->
+    <!--            </div>-->
+    <!--        </section>-->
+    <!--    </div>-->
+</main>
+<script src="./assets/js/main.js"></script>
+</body>
+</html>

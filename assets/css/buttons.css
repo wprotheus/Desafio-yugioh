@@ -1,0 +1,42 @@
+.button {
+    /* hide button default stuff */
+    border: none;
+    overflow: hidden;
+    outline:none;
+
+    /* background */
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background: Transparent url("/assets/img/button.png") no-repeat no-repeat center;
+    background-size: 100% 100%;
+
+    /* font size */
+    font-size: 1.5em;
+    color: #000;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+
+    /* default size and display */
+    max-width: 100%;
+    min-width: 170px;
+    height: 71px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+    /* padding */
+    padding: 0 35px;
+}
+
+/* button hover */
+.button.hover,
+.button:hover {
+    background-image: url("/assets/img/button-hover.png");
+}
+
+/* button clicked */
+.button.down,
+.button:active {
+    background-image: url("/assets/img/button-down.png");
+}

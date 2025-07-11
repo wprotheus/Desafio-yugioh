@@ -75,7 +75,7 @@ body {
 }
 
 .back-card, .versus-player, .versus-computer, img {
-    background-image: url('../assets/img/icons/card-back.png');
+    background-image: url('../img/icons/card-back.png');
 }
 
 .back-card, .versus-player, .versus-computer {
@@ -112,7 +112,7 @@ body {
 }
 
 #eye-card {
-    background-image: url('../assets/img/icons/millenium.png');
+    background-image: url('../img/icons/millenium.png');
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -200,7 +200,7 @@ body {
 }
 
 .versus-versus {
-    background-image: url('../assets/img/icons/millenium2.png');
+    background-image: url('../img/icons/millenium2.png');
     width: 170px;
     height: 170px;
     background-size: cover;

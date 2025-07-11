@@ -7,7 +7,7 @@
     /* background */
     background-clip: padding-box;
     background-origin: padding-box;
-    background: Transparent url("/assets/img/button.png") no-repeat no-repeat center;
+    background: Transparent url("../assets/img/button.png") no-repeat no-repeat center;
     background-size: 100% 100%;
 
     /* font size */
@@ -32,11 +32,11 @@
 /* button hover */
 .button.hover,
 .button:hover {
-    background-image: url("/assets/img/button-hover.png");
+    background-image: url("../assets/img/button-hover.png");
 }
 
 /* button clicked */
 .button.down,
 .button:active {
-    background-image: url("/assets/img/button-down.png");
+    background-image: url("../assets/img/button-down.png");
 }

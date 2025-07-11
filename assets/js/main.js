@@ -28,6 +28,8 @@ const state = {
     media: {
         audioBack: null,
         video: null,
+        win: new Audio("./assets/audios/win.wav"),
+        lose: new Audio("./assets/audios/lose.wav"),
     },
 };
 
@@ -99,6 +101,7 @@ async function showButtonNextDuel(resultMatch) {
     state.actions.button.innerText = resultMatch.toUpperCase();
     state.actions.button.addEventListener("click", async () => {
         await resetGame();
+        await clearAudio();
         state.actions.button.innerText = "";
     });
 }
@@ -109,11 +112,12 @@ async function checkMatch(cardId, pcCardId) {
     if (cardData[cardId].WinOf.includes(cardData[pcCardId].id)) {
         state.score.playerScore++;
         resultMatch = "win";
+        await state.media.win.play();
     }
-
     if (cardData[cardId].LoseOf.includes(cardData[pcCardId].id)) {
         state.score.computerScore++;
         resultMatch = "lose";
+        await state.media.lose.play();
     }
     if (cardId === pcCardId) {
         state.score.playerScore++;
@@ -194,7 +198,7 @@ function createMediaElements() {
     const audio = document.createElement("audio");
     audio.className = "audio";
     const audioSource = document.createElement("source");
-    audioSource.src = "./assets/audios/egyptian_duel.mp3"; // assets/audios/egyptian_duel.mp3
+    audioSource.src = "./assets/audios/egyptian_duel.mp3";
     audioSource.type = "audio/mp3";
     audio.appendChild(audioSource);
     audioContainer.appendChild(audio);
@@ -212,7 +216,8 @@ function createMediaElements() {
 }
 
 function playAudio() {
-    state.media.audioBack.volume = 0.2;
+    state.media.audioBack.volume = 0.1;
+    state.media.audioBack.loop = true;
     state.media.audioBack.play().catch(() => {
     });
 }
@@ -221,6 +226,14 @@ function playVideo() {
     state.media.video.loop = true;
     state.media.video.play().catch(() => {
     });
+}
+
+function clearAudio() {
+    if (state.media.audioBack) {
+        state.media.audioBack.pause();
+        state.media.audioBack.currentTime = 0;
+        state.media.audioBack.src = "";
+    }
 }
 
 function initMedia() {
